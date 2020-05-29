@@ -11,10 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// ===================== Front End Routes Start Here =====================
+Route::group(['namespace' => 'Site'], function() {
+    Route::get('/', 'SiteController@homePage')->name('home');
+    Route::get('/contact', 'SiteController@contactPage')->name('contact');
+    
+    Route::get('/category-posts', 'SiteController@categoryWisePostPage')->name('category.posts');
+    Route::get('/single-post', 'SiteController@singlePostPage')->name('single.post');
+
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// ===================== Front End Routes End Here =====================
+
+Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
